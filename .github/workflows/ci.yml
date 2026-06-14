@@ -15,6 +15,7 @@ env:
 # TIER 1 — Testes e Segurança (paralelos)
 # ════════════════════════════════════════════════════════
 
+
 jobs:
   test:
     name: 🧪 Testes
