@@ -2,9 +2,9 @@ name: CI/CD — tasks-api
 
 on:
   push:
-    branches: [main, demo]
+    branches: [master, demo]
   pull_request:
-    branches: [main, demo]
+    branches: [master, demo]
 
 env:
   AWS_REGION: us-east-1
