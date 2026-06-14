@@ -1,4 +1,4 @@
-name: CI/CD — tasks-api
+name: CI/CD — deploy-api
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  ECR_REPO_API:      tasks-api
-  ECR_REPO_FRONTEND: tasks-frontend
+  ECR_REPO_API:      deploy-api
+  ECR_REPO_FRONTEND: deploy-app
 
 # ════════════════════════════════════════════════════════
 # TIER 1 — Testes e Segurança (paralelos)
