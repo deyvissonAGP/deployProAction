@@ -1,0 +1,25 @@
+# Gitleaks — regras customizadas para a tasks-api
+# As regras padrão cobrem tokens de alta entropia (AWS, GitHub, etc.)
+# Este arquivo adiciona detecção de credenciais hardcoded no código-fonte.
+
+[extend]
+useDefault = true   # mantém todas as regras padrão
+
+[[rules]]
+id          = "hardcoded-password-js"
+description = "Senha hardcoded em código JavaScript/TypeScript"
+regex       = '''(?i)password\s*[:=]\s*['"][^'"${\s]{4,}['"]'''
+path        = '''.*\.(js|ts|mjs|cjs)$'''
+tags        = ["secret", "password"]
+
+  [rules.allowlist]
+  regexes = [
+    '''process\.env''',           # process.env.DB_PASSWORD — ok
+    '''['"]password['"]''',       # chave de objeto sendo referenciada
+  ]
+
+[[rules]]
+id          = "hardcoded-db-url"
+description = "Connection string com credencial embutida"
+regex       = '''(?i)(postgres|mysql|mongodb):\/\/[^:]+:[^@\s'"]{4,}@'''
+tags        = ["secret", "database"]
