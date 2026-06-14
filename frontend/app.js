@@ -1,4 +1,4 @@
-const API = window.API_URL || 'http://localhost:3000';
+const API = window.API_URL || 'http://ec2-13-217-223-199.compute-1.amazonaws.com:3000';
 
 async function fetchTasks() {
   const res = await fetch(`${API}/tasks`);
